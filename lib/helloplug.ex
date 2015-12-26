@@ -17,8 +17,16 @@ defmodule UserRouter do
 
   def route("GET", ["users", user_id], conn) do
     # this route is for /users/<user_id>
-    conn
-    |> Plug.Conn.send_resp(200, "You requested user #{user_id}")
+    case Helloplug.Repo.get(Helloplug.User, user_id) do
+      nil ->
+        conn
+        |> Plug.Conn.send_resp(404, "User with that ID not found, sorry!")
+      user ->
+        page_contents = EEx.eval_file("templates/show_user.eex", [user_id: user_id])
+        conn
+        |> Plug.Conn.put_resp_content_type("text/html")
+        |> Plug.Conn.send_resp(200, page_contents)
+    end
   end
 
   def route("POST", ["users"], conn) do
