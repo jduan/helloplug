@@ -2,7 +2,7 @@
 <html>
   <body>
     <h1><%= user.first_name %> <%= user.last_name %>'s' Page</h1>
-    <p>Looks like you've requested information for the user with id <%= user_id %>.</p>
+    <p>Looks like you've requested information for the user with id <%= user.id %>.</p>
     <%= if user.first_name == "Fluffums" do %>
       Also let me say that Fluffums is awesome.
     <% end %>

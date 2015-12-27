@@ -22,7 +22,7 @@ defmodule UserRouter do
         conn
         |> Plug.Conn.send_resp(404, "User ID #{user_id} not found, sorry!")
       user ->
-        page_contents = EEx.eval_file("templates/show_user.eex", [user_id: user_id])
+        page_contents = EEx.eval_file("templates/show_user.eex", [user: user])
         conn
         |> Plug.Conn.put_resp_content_type("text/html")
         |> Plug.Conn.send_resp(200, page_contents)
