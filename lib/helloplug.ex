@@ -1,5 +1,5 @@
 defmodule Router do
-  defmacro __using__(opts) do
+  defmacro __using__(_opts) do
     quote do
       def init(options) do
         options
@@ -29,7 +29,7 @@ defmodule UserRouter do
     end
   end
 
-  def route("POST", ["users"], conn) do
+  def route("POST", ["users"], _conn) do
     # insert to db etc
   end
 
@@ -45,7 +45,7 @@ defmodule Helloplug do
 
   @user_router_options UserRouter.init([])
 
-  def route("GET", ["users" | path], conn) do
+  def route("GET", ["users" | _path], conn) do
     UserRouter.call(conn, @user_router_options)
   end
 
