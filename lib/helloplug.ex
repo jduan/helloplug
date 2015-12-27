@@ -20,7 +20,7 @@ defmodule UserRouter do
     case Helloplug.Repo.get(Helloplug.User, user_id) do
       nil ->
         conn
-        |> Plug.Conn.send_resp(404, "User with that ID not found, sorry!")
+        |> Plug.Conn.send_resp(404, "User ID #{user_id} not found, sorry!")
       user ->
         page_contents = EEx.eval_file("templates/show_user.eex", [user_id: user_id])
         conn
