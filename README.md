@@ -17,3 +17,6 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
         def application do
           [applications: [:helloplug]]
         end
+
+## Start the server
+{:ok, pid} = Plug.Adapters.Cowboy.http Helloplug.Routing.Main,, []
