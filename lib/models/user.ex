@@ -1,4 +1,4 @@
-defmodule Helloplug.User do
+defmodule Helloplug.Models.User do
   use Ecto.Model
 
   schema "users" do
